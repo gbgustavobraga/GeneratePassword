@@ -2,28 +2,29 @@ from random import randint, shuffle, randrange
 import string
 
 
-def listAlphabetlow():
+# Uppercase, lowercase, and special characters lists
+def listAlphabetlow():  # List Alphabet lowercase
     low = list(string.ascii_lowercase)
     shuffle(low)
     num = randint(1, 7)
     return low[num]
 
 
-def listAlphabetupper():
+def listAlphabetupper():  # List Alphabet uppercase
     upper = list(string.ascii_uppercase)
     shuffle(upper)
     num = randint(1, 7)
     return upper[num]
 
 
-def ctrEspecials():
+def ctrEspecials():  # List Alphabet special characters
     ctr: list = ['!', '@', '#', '$', '%', '&', '*', '_']
     shuffle(ctr)
     num = randint(1, 7)
     return ctr[num]
 
 
-#  ok
+#  Random generators
 def generate_up_lw_ctr(size: int) -> None:
     list_pass = []
     for c in range(0, size):
@@ -203,7 +204,7 @@ def generate_up_num(size: int) -> None:
         shuffle(list_pass)
     for c in list_pass[0: size]:
         print(c, end='')
-        
+
 
 def generate_up(size: int) -> None:
     list_pass = []
@@ -267,6 +268,7 @@ def main() -> None:
 
 
 def main_() -> None:
+    print(' ')
     print(f"{'=' * 20} GENERATE PASSWORD {'=' * 20}")
 
     size: int = int(input("Size Password: "))
@@ -307,6 +309,7 @@ def main_() -> None:
     elif num == 1:
         generate_num(size)
     else:
+
         print('ERROR')
 
 
