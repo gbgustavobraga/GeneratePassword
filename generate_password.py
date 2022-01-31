@@ -51,11 +51,11 @@ def generate_up_lw_ctr_num(size: int) -> None:
         letter_low = listAlphabetlow()
         letter_upper = listAlphabetupper()
         ctr_especials = ctrEspecials()
-        num = randint(1, 10)
-        print(num)
+        num = [1, 2, 3, 4, 5, 6, 7, 8, 9]
+        shuffle(num)
         shuffle(letter_low and letter_upper and ctr_especials and num)
 
-        list_pass.append(num)
+        list_pass.append(num[1])
         list_pass.append(letter_upper)
         list_pass.append(letter_low)
         list_pass.append(ctr_especials)
@@ -72,9 +72,11 @@ def generate_up_low_num(size: int) -> None:
     for c in range(0, size):
         letter_low = listAlphabetlow()
         letter_upper = listAlphabetupper()
-        num = randint(1, 10)
+        num = [1, 2, 3, 4, 5, 6, 7, 8, 9]
+        shuffle(num)
+
         shuffle(letter_low and letter_upper and num)
-        list_pass.append(num)
+        list_pass.append(num[1])
         list_pass.append(letter_upper)
         list_pass.append(letter_low)
 
@@ -125,9 +127,10 @@ def generate_up_ctr_num(size: int) -> None:
     for c in range(0, size):
         ctr_especials = ctrEspecials()
         letter_upper = listAlphabetupper()
-        num = randint(1, 10)
+        num = [1, 2, 3, 4, 5, 6, 7, 8, 9]
+        shuffle(num)
         shuffle(ctr_especials and letter_upper and num)
-        list_pass.append(num)
+        list_pass.append(num[1])
         list_pass.append(letter_upper)
         list_pass.append(letter_low)
 
@@ -159,12 +162,11 @@ def generate_low_num(size: int) -> None:
     list_pass = []
     for c in range(0, size):
         letter_low = listAlphabetlow()
-        num = randint(1, 10)
+        num = [1, 2, 3, 4, 5, 6, 7, 8, 9]
+        shuffle(num)
         shuffle(letter_low and num)
-        list_pass.append(num)
-
+        list_pass.append(num[1])
         list_pass.append(letter_low)
-
         shuffle(list_pass)
 
     for c in list_pass[0: size]:
@@ -177,17 +179,31 @@ def generate_low_ctr_num(size: int) -> None:
     for c in range(0, size):
         letter_low = listAlphabetlow()
         ctr_especials = ctrEspecials()
-        num = randint(1, 10)
+        num = [1, 2, 3, 4, 5, 6, 7, 8, 9]
+        shuffle(num)
         shuffle(letter_low and ctr_especials and num)
-        list_pass.append(num)
+        list_pass.append(num[1])
         list_pass.append(ctr_especials)
         list_pass.append(letter_low)
-
         shuffle(list_pass)
 
     for c in list_pass[0: size]:
         print(c, end='')
 
+
+def generate_up_num(size: int) -> None:
+    list_pass = []
+    for c in range(0, size):
+        letter_upper = listAlphabetupper()
+        num = [1, 2, 3, 4, 5, 6, 7, 8, 9]
+        shuffle(num)
+        shuffle(letter_upper and num)
+        list_pass.append(num[1])
+        list_pass.append(letter_upper)
+        shuffle(list_pass)
+    for c in list_pass[0: size]:
+        print(c, end='')
+        
 
 def generate_up(size: int) -> None:
     list_pass = []
@@ -236,10 +252,12 @@ def generate_ctr(size: int) -> None:
 def generate_num(size: int) -> None:
     list_pass = []
     for c in range(0, size):
-        num = randint(1, 10)
-        list_pass.append(num)
-        shuffle(list_pass)
 
+        num = [1, 2, 3, 4, 5, 6, 7, 8, 9]
+        shuffle(num)
+        list_pass.append(num[1])
+        shuffle(list_pass)
+        print(len(list_pass))
     for c in list_pass[0: size]:
         print(c, end='')
 
@@ -252,41 +270,44 @@ def main_() -> None:
     print(f"{'=' * 20} GENERATE PASSWORD {'=' * 20}")
 
     size: int = int(input("Size Password: "))
-    num: str = str(input("Number [\033[31mY\033[m / \033[32mN\033[m]: ")).upper()[0]
-    upper: str = str(input("Capital letters [\033[31mY\033[m / \033[32mN\033[m]: ")).upper()
-    low: str = str(input("Small letters [\033[31mY\033[m / \033[32mN\033[m]: ")).upper()
-    ctr: int = int(input("Special characters [\033[31mY\033[m / \033[32mN\033[m]: "))
-    if upper == 'Y' and low == 'Y' and ctr == 'y' and num == 'Y':
+    num: int = int(input("Number [\033[31m1\033[m / \033[32m0\033[m]: "))
+    upper: int = int(input("Capital letters [\033[31m1\033[m / \033[32m0\033[m]: "))
+    low: int = int(input("Small letters [\033[31m1\033[m / \033[32m0\033[m]: "))
+    ctr: int = int(input("Special characters [\033[31m1\033[m / \033[32m0\033[m]: "))
+    if upper == 1 and low == 1 and ctr == 1 and num == 1:
         generate_up_lw_ctr_num(size)
 
-    elif upper == 'Y' and low == 'Y' and ctr == 1:
+    elif upper == 1 and low == 1 and ctr == 1:
         generate_up_lw_ctr(size)
-    elif upper == 'Y' and low == 'Y':
+    elif upper == 1 and low == 1:
         generate_up_low(size)
-    elif upper == 'Y' and low == 'Y' and num == 'Y':
+    elif upper == 1 and low == 1 and num == 1:
         generate_up_low_num(size)
-    elif low == 'Y' and ctr == 'Y':
+    elif low == 1 and ctr == 1:
         generate_low_ctr(size)
 
-    elif low == 'Y' and num == 'Y':
+    elif low == 1 and num == 1:
         generate_low_num(size)
-    elif low == 'Y' and ctr == 'Y' and num == 'Y':
+
+    elif upper == 1 and num == 1:
+        generate_up_num(size)
+    elif low == 1 and ctr == 1 and num == 1:
         generate_low_ctr_num(size)
-    elif ctr == 'Y' and upper == 'Y':
+    elif ctr == 1 and upper == 1:
         generate_up_ctr(size)
-    elif ctr == 'Y' and upper == 'Y' and num == 'Y':
+    elif ctr == 1 and upper == 1 and num == 1:
         generate_up_ctr_num(size)
-    elif upper == 'Y':
+    elif upper == 1:
         generate_up(size)
-    elif low == 'Y':
+    elif low == 1:
         generate_low(size)
-    elif ctr == 'Y':
+    elif ctr == 1:
         generate_ctr(size)
 
-    elif num == 'Y':
+    elif num == 1:
         generate_num(size)
     else:
-        print('vasco')
+        print('ERROR')
 
 
 if __name__ == "__main__":
